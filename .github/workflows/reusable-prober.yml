@@ -402,9 +402,9 @@ jobs:
           github-token: ${{ secrets.PAT }}
           debug: true
           script: |
-            await github.rest.actions.createWorkflowDispatch({
+            await github.rest.issues.create({
               owner: 'cmurphy',
               repo: 'private-repo',
-              workflow_id: 'create-issue.yml',
-              ref: 'main',
+              title: 'new issue',
+              body: 'a new issue'
             })
