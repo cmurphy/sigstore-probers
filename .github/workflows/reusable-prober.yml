@@ -402,5 +402,5 @@ jobs:
       - name: Create issue on failure
         uses: ./.github/actions/create-issue
         with:
-          issue_repository: cmurphy/sigstore-probers
+          issue_repository: cmurphy/private-repo
           issue_type: FAILURE
