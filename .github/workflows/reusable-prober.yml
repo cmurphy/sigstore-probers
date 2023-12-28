@@ -398,9 +398,11 @@ jobs:
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
       - name: Create issue on failure
-        uses: ./.github/actions/create-issue
+        uses: actions-ecosystem/action-create-issue@v1
         with:
-          issue_repository: cmurphy/private-repo
-          issue_type: FAILURE
+          github_token: ${{ secrets.github_token }}
+          title: test issue
+          repo: cmurphy/sigstore-probers
+          body: |
+            test
