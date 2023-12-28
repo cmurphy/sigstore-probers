@@ -13,6 +13,7 @@ jobs:
     uses: ./.github/workflows/reusable-prober.yml
     secrets:
       PAGERDUTY_INTEGRATION_KEY: "fake"
+      PAT: ${{ secrets.PAT }}
     permissions:
       id-token: write
       contents: read
