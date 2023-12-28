@@ -390,7 +390,7 @@ jobs:
         ]
 
   if-failed:
-    if: failure()
+    if: always() && (needs.sigstore-probe.result == 'failure' || needs.root-probe.result == 'failure' || needs.rekor-fulcio-e2e.result == 'failure')
     runs-on: ubuntu-latest
     needs: [sigstore-probe, root-probe, rekor-fulcio-e2e, compute-summary-msg]
     permissions:
