@@ -6,8 +6,8 @@ on:
       PAGERDUTY_INTEGRATION_KEY:
         description: 'Integration key for PagerDuty'
         required: true
-      PAT:
-        description: 'Personal Access Token for GitHub'
+      sigstore_github_token:
+        description: 'Personal Access Token for GitHub. Must be scoped to the repository it will file alert issues for.'
         required: true
     inputs:
       rekor_url:
@@ -399,7 +399,7 @@ jobs:
     steps:
       - uses: actions-ecosystem/action-create-issue@b02a3c1d9d929a5839315bd255e40389f0dab627 # v1.0.0
         with:
-          github_token: ${{ secrets.PAT }}
+          github_token: ${{ secrets.sigstore_github_token }}
           repo: cmurphy/private-repo
           title: 'new issue'
           body: 'a new issue'
