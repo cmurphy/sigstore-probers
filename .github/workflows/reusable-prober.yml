@@ -403,3 +403,7 @@ jobs:
           repo: cmurphy/public-good-instance # FIXME
           title: 'new issue'
           body: 'a new issue'
+          labels: |
+            alert
+            oncall
+            ${{ inputs.enable_staging && 'env:staging' || 'env:production' }}

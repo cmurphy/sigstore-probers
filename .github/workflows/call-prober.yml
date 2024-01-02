@@ -1,6 +1,12 @@
 name: Test Prober
 
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      enable_staging:
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   id-token: write
@@ -20,7 +26,7 @@ jobs:
       packages: write
       issues: write
     with:
-      enable_staging: true
+      enable_staging: ${{ inputs.enable_staging }}
       rekor_url: "https://rekor.sigstage.dev"
       fulcio_url: "https://fulcio.sigstage.dev"
       oidc_url: "https://oauth2.sigstage.dev/auth"
