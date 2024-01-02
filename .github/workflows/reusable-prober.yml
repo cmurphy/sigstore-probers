@@ -401,9 +401,16 @@ jobs:
         with:
           github_token: ${{ secrets.sigstore_github_token }}
           repo: cmurphy/public-good-instance # FIXME
-          title: 'new issue'
-          body: 'a new issue'
+          title: "[ALERT][${{ inputs.enable_staging && 'staging' || 'prod' }}] Prober Failed"
+          body: |
+            Environment: ${{ needs.compute-summary-msg.outputs.group }}
+            Failure URL: https://github.com/sigstore/sigstore-probers/actions/runs/${{ github.run_id }}
+            Commit: ${{ github.sha }}
+            Prober: ${{ needs.sigstore-probe.outputs.sigstore_probe }}
+            GCS Root: ${{ needs.root-probe.outputs.root_state }}
+            Rekor Fulcio E2E Test: ${{ needs.rekor-fulcio-e2e.outputs.rekor_fulcio_e2e }}
           labels: |
+            needs-assignee
             alert
             oncall
             ${{ inputs.enable_staging && 'env:staging' || 'env:production' }}
