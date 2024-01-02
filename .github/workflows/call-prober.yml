@@ -12,7 +12,6 @@ permissions:
   id-token: write
   contents: read
   packages: write
-  issues: write
 
 jobs:
   prober:
@@ -24,7 +23,6 @@ jobs:
       id-token: write
       contents: read
       packages: write
-      issues: write
     with:
       enable_staging: ${{ inputs.enable_staging }}
       rekor_url: "https://rekor.sigstage.dev"
