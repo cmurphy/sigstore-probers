@@ -16,7 +16,7 @@ release:
   prerelease: allow
   draft: true
   github:
-    owner: sigstore
+    owner: cmurphy
     name: sigstore-probers
   footer: |
     ### Thanks to all contributors!
